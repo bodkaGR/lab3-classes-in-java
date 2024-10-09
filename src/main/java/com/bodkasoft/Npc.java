@@ -1,5 +1,7 @@
 package com.bodkasoft;
 
+import java.util.Objects;
+
 public class Npc {
 
     private String name;
@@ -56,6 +58,23 @@ public class Npc {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this){
+            return true;
+        }
+
+        if(!(obj instanceof Npc npc)){
+            return false;
+        }
+
+        return Objects.equals(this.name, npc.name) &&
+                this.age == npc.age &&
+                this.gender == npc.gender &&
+                this.healthPoints == npc.healthPoints &&
+                Objects.equals(this.description, npc.description);
     }
 
     @Override
